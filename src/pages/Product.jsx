@@ -2,6 +2,7 @@ import { Component } from 'react'
 
 import axios from 'axios';
 import { Container } from 'react-bootstrap'
+import { toast } from 'react-toastify';
 
 
 class Product extends Component {
@@ -16,21 +17,25 @@ class Product extends Component {
             let productId = window.location.pathname.split('/')[2];
             let { data } = await axios(`https://fakestoreapi.com/products/${productId}`)
             this.setState({ product: data })
-        }catch(err){
-            console.log(err);
-        }finally{
+        } catch (err) {
+            toast.error("Error !")
+        } finally {
 
         }
     }
     render() {
-        const {product} = this.state
+        const { product } = this.state
         return (
             <Container>
-                <h1>{product?.title}</h1>
-                <img src={product?.image} alt="" />
-                <p>Category: {product?.category}</p>
-                <p>Desc: {product?.description}</p>
-                <p>Price: {product?.price}$</p>
+                <h1 className='product__title mb-2'>{product?.title}</h1>
+                <div className='product__box'>
+                    <img className='product__img w-50 mb-2' src={product?.image} alt={product?.title} />
+                    <div>
+                        <p className='product__category text-capitalize h2'>Category: {product?.category}</p>
+                        <p className='product__desc w-40'>Desc: {product?.description}</p>
+                        <p className='product__price h1'>Price: {product?.price}$</p>
+                    </div>
+                </div>
             </Container>
         )
     }

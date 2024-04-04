@@ -41,7 +41,7 @@ class HomePage extends Component {
             <Container>
                 <div className='category__card__rows'>
                     <Card className='my-3 me-3 p-2' >
-                        <Card.Img src={img1}  />
+                        <Card.Img className='p-4' src={img1}  />
                         <Card.Body>
                             <Card.Title>Electronics</Card.Title>
                             <Button variant="success">
@@ -52,7 +52,7 @@ class HomePage extends Component {
                         </Card.Body>
                     </Card>
                     <Card className='my-3 me-3 p-2' >
-                        <Card.Img src={img2}  />
+                        <Card.Img className='p-4' src={img2}  />
                         <Card.Body>
                             <Card.Title>Jewelery</Card.Title>
                             <Button variant="success">
@@ -63,7 +63,7 @@ class HomePage extends Component {
                         </Card.Body>
                     </Card>
                     <Card className='my-3 me-3 p-2' >
-                        <Card.Img src={img4}  />
+                        <Card.Img className='p-4' src={img4}  />
                         <Card.Body>
                             <Card.Title>Men's clothing</Card.Title>
                             <Button variant="success">
@@ -74,7 +74,7 @@ class HomePage extends Component {
                         </Card.Body>
                     </Card>
                     <Card className='my-3 me-3 p-2' >
-                        <Card.Img src={img3}  />
+                        <Card.Img className='p-4' src={img3}  />
                         <Card.Body>
                             <Card.Title>Women's clothing</Card.Title>
                             <Button variant="success">

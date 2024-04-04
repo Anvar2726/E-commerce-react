@@ -33,7 +33,7 @@ class Category extends Component {
         const { products, loading } = this.state;
         return (
             <Container>
-                <h1 className='my-3'>Category: {query[0].split('/')} {query[1]}</h1>
+                <h1 className='my-3 text-capitalize'>Category: {query[0].split('/')} {query[1]}</h1>
                 <div className="product__cards__row">
                     {loading ? <Loading/> : 
                     products.map(el => <ProductCard key={el.id} {...el} />)

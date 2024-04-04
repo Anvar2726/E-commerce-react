@@ -8,10 +8,10 @@ class ProductCard extends Component {
     const {id, title, price, category, description, image} = this.props;
     return (
         <Card className='mb-3 '>
-        <Card.Img src={image} height={300}/>
+        <Card.Img className='p-4' src={image} height={300}/>
         <Card.Body>
-            <Card.Title className='product__title'>{title}</Card.Title>
-            <Card.Text className='product__desc'>
+            <Card.Title className='product__card__title'>{title}</Card.Title>
+            <Card.Text className='product__card__desc'>
                 {description}
             </Card.Text>
             <p>Category: <Badge bg="primary">{category}</Badge></p>
