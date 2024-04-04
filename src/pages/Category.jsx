@@ -1,8 +1,8 @@
 import { Component } from 'react'
 
-import axios from 'axios';
 import { Container } from 'react-bootstrap'
 import { toast } from 'react-toastify';
+import request from '../const';
 
 import Loading from '../components/loading/Loading';
 import ProductCard from '../components/product-card/ProductCard';
@@ -16,7 +16,7 @@ class Category extends Component {
         try {
             this.setState({loading: true,})
             let query = window.location.pathname.split('/')[1];
-            let { data } = await axios(`https://fakestoreapi.com/products/category/${query}`)
+            let { data } = await request(`products/category/${query}`)
             this.setState({ products: data });
         }catch(err){
             toast.error('Error!')

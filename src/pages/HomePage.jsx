@@ -3,7 +3,6 @@ import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, Container} from 'react-bootstrap';
 import { toast } from 'react-toastify';
-import axios from 'axios';
 
 import Loading from '../components/loading/Loading';
 
@@ -12,22 +11,27 @@ import img2 from '../assets/images/jewellery.png';
 import img3 from '../assets/images/dress.png';
 import img4 from '../assets/images/clothes-hanger.png';
 import ProductCard from '../components/product-card/ProductCard';
+import request from '../const';
 
 
 class HomePage extends Component {
     state = {
         product: [],
         loading: false,
+        limit: 4,
     }
     componentDidMount(){
         this.getProducts();
     }
 
-    async getProducts(search = ''){
+    async getProducts(limit = 4){
         try{
             this.setState({loading: true})
-            let {data} = await axios('https://fakestoreapi.com/products', {params: {sort: search}});
-            this.setState({product: data})
+            // let {data} = await axios('https://fakestoreapi.com/products');
+            let {data: limitData} = await request(`products`, {params: {limit: limit}})
+            console.log(limitData);
+            console.log(this.state.limit);
+            this.setState({product: limitData})
         }catch(err){
             toast.error('Error!');
         }finally{
@@ -36,7 +40,12 @@ class HomePage extends Component {
     }
 
     render() {
-        const {product, loading} = this.state;
+        const {product, loading, limit} = this.state;
+        const showProducts = () =>{
+            let limitPr = limit +  4
+            this.getProducts(limitPr)
+            this.setState({limit: limitPr})
+        }
         return (
             <Container>
                 <div className='category__card__rows'>
@@ -90,6 +99,7 @@ class HomePage extends Component {
                     {loading ? <Loading/> :
                     product.map(el => <ProductCard key={el.id} {...el}/>)
                 }
+                <button className='btn btn-info mb-3' onClick={showProducts}>Show More</button>
                 </div>
             </Container>
         )

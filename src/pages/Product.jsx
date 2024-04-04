@@ -1,8 +1,8 @@
 import { Component } from 'react'
 
-import axios from 'axios';
 import { Container } from 'react-bootstrap'
 import { toast } from 'react-toastify';
+import request from '../const';
 
 
 class Product extends Component {
@@ -15,7 +15,7 @@ class Product extends Component {
     async getProduct() {
         try {
             let productId = window.location.pathname.split('/')[2];
-            let { data } = await axios(`https://fakestoreapi.com/products/${productId}`)
+            let { data } = await request(`products/${productId}`)
             this.setState({ product: data })
         } catch (err) {
             toast.error("Error !")
