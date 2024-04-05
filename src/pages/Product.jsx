@@ -1,8 +1,9 @@
 import { Component } from 'react'
 
+import request from '../const';
+
 import { Container } from 'react-bootstrap'
 import { toast } from 'react-toastify';
-import request from '../const';
 
 
 class Product extends Component {
